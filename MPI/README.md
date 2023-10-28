@@ -10,7 +10,7 @@ El código proporcionado resuelve la Ecuación de Calor en 2D mediante el modelo
 
 El código proporcionado resuelve la Ecuación de Calor en 2D utilizando el modelo de programación paralela MPI (Message Passing Interface). A continuación, se explica en lenguaje sencillo lo que hace el código paso a paso:
 
-| Paso | Descripción |
+|  | Descripción |
 |-----|------------|
 | 1. | **Inicialización y Declaración de Variables**:<br>Se definen diversas variables, como la constante de difusión `a`, dos campos `current` y `previous` que indican la temperatura actual y previa, y otras variables para controlar el tiempo y la paralelización. |
 | 2. | **Inicialización de MPI**:<br>Se inicia MPI (Message Passing Interface) para habilitar la comunicación y coordinación entre múltiples procesos que trabajan en paralelo. |
@@ -189,24 +189,30 @@ A continuación se presentan los resultados de las pruebas de rendimiento:
 ### Versión Original del Código
 
 1. **Prueba 1:** Iteration took 63.371 seconds
+
    ![Texto alternativo](https://github.com/SC3UIS/IntroPP2191928/blob/main/MPI/imagenes/sinmejora1.png)
 
 2. **Prueba 2:** Iteration took 124.787 seconds
+
    ![Texto alternativo](https://github.com/SC3UIS/IntroPP2191928/blob/main/MPI/imagenes/sinmejora2.png)
 
 3. **Prueba 3:** Iteration took 156.675 seconds
+
    ![Texto alternativo](https://github.com/SC3UIS/IntroPP2191928/blob/main/MPI/imagenes/sinmejora3.png)
 
 
 ### Versión Paralelizada del Código
 
 1. **Prueba 1:** Iteration took 63.390 seconds
+
 ![Texto alternativo](https://github.com/SC3UIS/IntroPP2191928/blob/main/MPI/imagenes/conmejora1.png)
 
 2. **Prueba 2:** Iteration took 125.269 seconds
+
 ![Texto alternativo](https://github.com/SC3UIS/IntroPP2191928/blob/main/MPI/imagenes/conmejora2.png)
 
 3. **Prueba 3:** Iteration took 156.134 seconds
+
 ![Texto alternativo](https://github.com/SC3UIS/IntroPP2191928/blob/main/MPI/imagenes/conmejora3.png)
 
 
