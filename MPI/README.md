@@ -10,7 +10,7 @@ El código proporcionado resuelve la Ecuación de Calor en 2D mediante el modelo
 
 El código proporcionado resuelve la Ecuación de Calor en 2D utilizando el modelo de programación paralela MPI (Message Passing Interface). A continuación, se explica en lenguaje sencillo lo que hace el código paso a paso:
 
-|  | Descripción |
+| Paso | Descripción |
 |-----|------------|
 | 1. | **Inicialización y Declaración de Variables**:<br>Se definen diversas variables, como la constante de difusión `a`, dos campos `current` y `previous` que indican la temperatura actual y previa, y otras variables para controlar el tiempo y la paralelización. |
 | 2. | **Inicialización de MPI**:<br>Se inicia MPI (Message Passing Interface) para habilitar la comunicación y coordinación entre múltiples procesos que trabajan en paralelo. |
@@ -84,31 +84,31 @@ Este comando compilará todos los archivos fuente y generará un ejecutable deno
 
 ## Ejecución Interactiva
 
-Podemos ejecutar el programa interactivamente utilizando el comando `mpirun`. A continuación se describen varias opciones para ejecutar el programa con diferentes condiciones iniciales y parámetros de tiempo. Asegúrate de haber compilado el programa siguiendo las instrucciones previamente proporcionadas.
+Tenemos la posibilidad de ejecutar el programa de manera interactiva utilizando el comando `mpirun`. A continuación, se explican diversas alternativas para ejecutar el programa con distintas configuraciones iniciales y valores de tiempo. Asegúrate de haber seguido las indicaciones de compilación proporcionadas anteriormente antes de proceder.
 
 ### 1. Valores Predeterminados
 
-Para ejecutar el programa con los valores predeterminados, utiliza el siguiente comando:
+Para iniciar el programa con la configuración estándar, emplea el siguiente comando:
 
 ```bash
 mpirun -np 8 ./heat_mpi
 ```
 
-Esto ejecutará el programa con valores predeterminados para el campo inicial y los parámetros de tiempo.
+Este comando ejecutará el programa con la configuración por defecto para el campo inicial y los parámetros de tiempo.
 
 ### 2. Campo Inicial desde un Archivo
 
-Puedes utilizar un archivo de entrada para definir el campo inicial de temperatura. Por ejemplo, si tienes un archivo llamado botella.dat, ejecuta el programa de la siguiente manera:
+Tienes la opción de emplear un archivo de entrada para establecer el campo inicial de la temperatura. Por ejemplo, si dispones de un archivo llamado `botella.dat`, puedes ejecutar el programa de la siguiente forma:
 
 ```bash
 mpirun -np 8 ./heat_mpi botella.dat
 ```
 
-Esto tomará el campo inicial del archivo botella.dat como punto de partida.
+Esto tomará el campo inicial del archivo botella.dat como punto de inicio.
 
 ### 3. Campo Inicial desde un Archivo y Pasos de Tiempo
 
-Para especificar tanto el campo inicial desde un archivo como el número de pasos de tiempo, utilizamos el siguiente formato:
+Para indicar tanto el campo inicial desde un archivo como la cantidad de pasos de tiempo, empleamos el siguiente formato:
 
 ```bash
 mpirun -np 8 ./heat_mpi botella.dat 1000
@@ -118,7 +118,7 @@ Esto cargará el campo inicial desde botella.dat y realizará 1000 pasos de tiem
 
 ### 4. Dimensiones y Pasos de Tiempo Personalizados
 
-Para definir dimensiones personalizadas (ancho y alto) y el número de pasos de tiempo, podemos hacerlo de la siguiente manera:
+Para establecer medidas personalizadas (ancho y alto) y la cantidad de pasos de tiempo, podemos configurarlo de la siguiente forma:
 
 ```bash
 mpirun -np 8 ./heat_mpi [ANCHO] [ALTO] [PASOS]
@@ -130,15 +130,15 @@ Por ejemplo:
 mpirun -np 8 ./heat_mpi 800 800 1000
 ```
 
-Todos estos comandos, generarán una serie de archivos heat_NUM_figura.png que representan el desarrollo temporal del campo de temperatura. Podemos utilizar cualquier visor de gráficos para visualizar estos resultados.
+Cada uno de estos comandos producirá una serie de archivos con el formato `heat_NUM_figura.png` que ilustran la evolución temporal del campo de temperatura. Se puede emplear cualquier programa visualizador de gráficos para observar los resultados.
 
-## Ejecución Pasiva
+## Ejecución en Modo Pasivo
 
-Para ejecutar el programa en modo pasivo utilizando sbatch y garantizar que se cargue el módulo MPI recomendado antes de la ejecución, debemos seguir estos pasos:
+Para llevar a cabo la ejecución del programa en modo pasivo mediante sbatch y asegurar la carga del módulo MPI recomendado antes de la ejecución, es necesario seguir este procedimiento:
 
-### 1. Crear un archivo de script de trabajo
+### 1. Elaborar un Script de Trabajo
 
-Crear un archivo de script de trabajo, por ejemplo, run_heat_mpi.sh, utilizando un editor de texto. Similar al siguiente contenido en el archivo:
+Generar un archivo de script de trabajo, por ejemplo, denominado `run_heat_mpi.sh`, utilizando un editor de texto. El contenido del archivo debe ser similar al siguiente ejemplo:
 ```bash
 #!/bin/bash
 #SBATCH --job-name=heat_mpi_job   # Nombre del trabajo
@@ -159,21 +159,18 @@ NUM_STEPS=1000
 mpirun -np ./heat_mpi
 ```
 
-### 2. Enviar el trabajo a Slurm
+### 2. Envío del Trabajo a Slurm
 
-Utilizando el comando sbatch para enviar el trabajo a Slurm. El script se someterá y ejecutará según las opciones especificadas en el script de trabajo. Asegúrate de estar en el directorio donde se encuentra el script:
+Emplear el comando "sbatch" para enviar el trabajo a Slurm. El script será sometido y ejecutado de acuerdo con las configuraciones especificadas en el script de trabajo. Asegúrate de estar en el directorio donde el script se encuentra ubicado:
 
 ```bash 
 sbatch run_heat_mpi.sh
 ```
 
-
 ## Pruebas de Rendimiento - Solución de la Ecuación del Calor con MPI
 
 Se presentan los resultados de pruebas de rendimiento realizadas en la solución de la Ecuación del Calor con MPI sin ninguna mejora solo utilizando las banderas `-O3 -Wall`.  Se comparan los tiempos de ejecución entre la versión original del código y la versión paralelizada para evaluar el impacto de la paralelización en el rendimiento.
 
-
-  
 Se realizaron tres pruebas de rendimiento utilizando diferentes configuraciones de entrada:
 
 1. **Prueba 1:** Se utilizó el comando `mpirun -np 8 ./heat_mpi bottle.dat` con la versión original del código.
@@ -188,6 +185,7 @@ A continuación se presentan los resultados de las pruebas de rendimiento:
 
 ### Versión Original del Código
 
+
 1. **Prueba 1:** Iteration took 63.371 seconds
 
    ![Texto alternativo](https://github.com/SC3UIS/IntroPP2191928/blob/main/MPI/imagenes/sinmejora1.png)
@@ -200,8 +198,8 @@ A continuación se presentan los resultados de las pruebas de rendimiento:
 
    ![Texto alternativo](https://github.com/SC3UIS/IntroPP2191928/blob/main/MPI/imagenes/sinmejora3.png)
 
-
 ### Versión Paralelizada del Código
+
 
 1. **Prueba 1:** Iteration took 63.390 seconds
 
@@ -214,7 +212,6 @@ A continuación se presentan los resultados de las pruebas de rendimiento:
 3. **Prueba 3:** Iteration took 156.134 seconds
 
 ![Texto alternativo](https://github.com/SC3UIS/IntroPP2191928/blob/main/MPI/imagenes/conmejora3.png)
-
 
 ## Mejoras en el código
 
@@ -241,7 +238,3 @@ Basándonos en los resultados de las pruebas de rendimiento, podemos sacar las s
 2. En la "Prueba 2", la versión paralelizada tomó más tiempo en comparación con la versión original. Esto podría deberse a la sobrecarga adicional de la paralelización en configuraciones más pequeñas.
 
 3. En la "Prueba 3", ambas versiones del código tuvieron un rendimiento similar. Esto indica que la paralelización no siempre es la solución óptima y que el rendimiento puede depender de varios factores, incluido el tamaño del problema.
-
-
-
-
