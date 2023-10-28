@@ -189,7 +189,7 @@ A continuación se presentan los resultados de las pruebas de rendimiento:
 ### Versión Original del Código
 
 1. **Prueba 1:** Iteration took 63.371 seconds
-   ![Texto alternativo]([URL de la imagen](https://github.com/SC3UIS/IntroPP2191928/blob/main/MPI/imagenes/sinmejora1.png)
+   ![Texto alternativo](https://github.com/SC3UIS/IntroPP2191928/blob/main/MPI/imagenes/sinmejora1.png)
 
 2. **Prueba 2:** Iteration took 124.787 seconds
    ![Texto alternativo](https://github.com/SC3UIS/IntroPP2191928/blob/main/MPI/imagenes/sinmejora2.png)
@@ -201,13 +201,13 @@ A continuación se presentan los resultados de las pruebas de rendimiento:
 ### Versión Paralelizada del Código
 
 1. **Prueba 1:** Iteration took 63.390 seconds
-![Texto alternativo]([URL de la imagen](https://github.com/SC3UIS/IntroPP2191928/blob/main/MPI/imagenes/conmejora1.png)
+![Texto alternativo](https://github.com/SC3UIS/IntroPP2191928/blob/main/MPI/imagenes/conmejora1.png)
 
 2. **Prueba 2:** Iteration took 125.269 seconds
-![Texto alternativo]([URL de la imagen](https://github.com/SC3UIS/IntroPP2191928/blob/main/MPI/imagenes/conmejora2.png)
+![Texto alternativo](https://github.com/SC3UIS/IntroPP2191928/blob/main/MPI/imagenes/conmejora2.png)
 
 3. **Prueba 3:** Iteration took 156.134 seconds
-![Texto alternativo]([URL de la imagen](https://github.com/SC3UIS/IntroPP2191928/blob/main/MPI/imagenes/conmejora3.png)
+![Texto alternativo](https://github.com/SC3UIS/IntroPP2191928/blob/main/MPI/imagenes/conmejora3.png)
 
 
 ## Mejoras en el código
