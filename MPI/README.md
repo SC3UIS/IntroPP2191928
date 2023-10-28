@@ -175,10 +175,10 @@ Los resultados de la simulación de la ecuación de calor 2D utilizando el progr
 
 
 
-### Prueba 2: Ejecución con archivo 'bottle.dat' y 1000 pasos
+### Prueba 2: Ejecución con archivo 'bottle.dat' y 1500 pasos
 
 
-### Prueba 3: Ejecución con dimensiones 1280x1280 y 1000 pasos
+### Prueba 3: Ejecución con dimensiones 1980x1080 y 1500 pasos
 
 
 ## Conclusiones
@@ -200,10 +200,10 @@ Los resultados de la simulación de la ecuación de calor 2D utilizando el progr
 ### Prueba 1: Ejecución con archivo 'bottle.dat'
 
 
-### Prueba 2: Ejecución con archivo 'bottle.dat' y 1000 pasos
+### Prueba 2: Ejecución con archivo 'bottle.dat' y 1500 pasos
 
 
-### Prueba 3: Ejecución con dimensiones 1280x1280 y 1000 pasos
+### Prueba 3: Ejecución con dimensiones 1980x1080 y 1500 pasos
 
 
 ## Conclusiones
