@@ -167,46 +167,63 @@ Utilizando el comando sbatch para enviar el trabajo a Slurm. El script se somete
 sbatch run_heat_mpi.sh
 ```
 
-# Ejecución de pruebas sin mejoras de código
 
-Los resultados de la simulación de la ecuación de calor 2D utilizando el programa `heat_mpi` compilado con las banderas por defecto `-O3 -Wall` pero con diferentes configuraciones. A continuación, se presentan los resultados, las configuraciones y las conclusiones de las pruebas.
+## Pruebas de Rendimiento - Solución de la Ecuación del Calor con MPI
 
-### Prueba 1: Ejecución con archivo 'bottle.dat'
-
+Se presentan los resultados de pruebas de rendimiento realizadas en la solución de la Ecuación del Calor con MPI sin ninguna mejora solo utilizando las banderas `-O3 -Wall`.  Se comparan los tiempos de ejecución entre la versión original del código y la versión paralelizada para evaluar el impacto de la paralelización en el rendimiento.
 
 
-### Prueba 2: Ejecución con archivo 'bottle.dat' y 1500 pasos
+  
+Se realizaron tres pruebas de rendimiento utilizando diferentes configuraciones de entrada:
 
+1. **Prueba 1:** Se utilizó el comando `mpirun -np 8 ./heat_mpi bottle.dat` con la versión original del código.
+2. **Prueba 2:** Se utilizó el comando `mpirun -np 8 ./heat_mpi bottle.dat 800` con la versión original del código.
+3. **Prueba 3:** Se utilizó el comando `mpirun -np 8 ./heat_mpi 600 600 1000` con la versión original del código.
 
-### Prueba 3: Ejecución con dimensiones 1980x1080 y 1500 pasos
+Además, se realizaron las mismas tres pruebas con la versión paralelizada del código, que se titulan "Con el main.c paralelizado."
 
+## Resultados
+
+A continuación se presentan los resultados de las pruebas de rendimiento:
+
+### Versión Original del Código
+
+1. **Prueba 1:** Iteration took 63.371 seconds
+2. **Prueba 2:** Iteration took 124.787 seconds
+3. **Prueba 3:** Iteration took 156.675 seconds
+
+### Versión Paralelizada del Código
+
+1. **Prueba 1:** Iteration took 63.390 seconds
+2. **Prueba 2:** Iteration took 125.269 seconds
+3. **Prueba 3:** Iteration took 156.134 seconds
+
+## Mejoras en el código
+
+- Inclusión de MPI: Se agregaron llamadas a las funciones MPI para inicializar MPI (MPI_Init), finalizar MPI (MPI_Finalize), obtener el rango del proceso actual (parallelization.rank), y más. Estas llamadas permiten la comunicación y la sincronización entre los procesos paralelos.
+
+- División del Dominio: Se dividió el dominio en una malla 2D, y cada proceso es responsable de calcular una parte de la malla. Esto permite que varios procesos trabajen en paralelo en secciones separadas del problema.
+
+- Funciones de Intercambio de Información: Se agregaron funciones para inicializar (exchange_init) y finalizar (exchange_finalize) el intercambio de información entre procesos. Estas funciones aseguran que los valores en los bordes de las submallas se actualicen correctamente.
+
+- Cálculo Paralelo: La evolución de la temperatura se realiza en paralelo en cada proceso, lo que permite que varios procesos trabajen simultáneamente en diferentes partes del dominio.
+
+- Sincronización Eficiente: Se gestionó la sincronización de los procesos de manera eficiente utilizando MPI, lo que garantiza que los procesos se comuniquen y cooperen adecuadamente en la simulación.
+
+- Distribución de Trabajo: La carga de trabajo se distribuyó entre múltiples procesos para acelerar el cálculo de la Ecuación del Calor en 2D.
+
+- Uso de la Marca de Tiempo MPI: Se utilizó MPI_Wtime para medir el tiempo de CPU utilizado para la iteración, lo que permite conocer el rendimiento de la simulación.
 
 ## Conclusiones
 
+Basándonos en los resultados de las pruebas de rendimiento, podemos sacar las siguientes conclusiones:
 
-# Ejecución de pruebas con mejoras de código (main.c)
+1. En la "Prueba 1", la versión paralelizada del código logró un rendimiento similar a la versión original. Esto sugiere que la paralelización puede ser beneficiosa en ciertos escenarios, pero no necesariamente mejora el rendimiento en todos los casos.
 
+2. En la "Prueba 2", la versión paralelizada tomó más tiempo en comparación con la versión original. Esto podría deberse a la sobrecarga adicional de la paralelización en configuraciones más pequeñas.
 
-## Mejoras
+3. En la "Prueba 3", ambas versiones del código tuvieron un rendimiento similar. Esto indica que la paralelización no siempre es la solución óptima y que el rendimiento puede depender de varios factores, incluido el tamaño del problema.
 
-- Paralelización del cálculo de la ecuación de calor en 2D.
-- Uso de MPI para dividir el dominio en subdominios manejados por procesos MPI separados.
-- Cada proceso MPI calcula la evolución de la temperatura en su subdominio.
-- Comunicación entre procesos vecinos para mantener la coherencia de los datos.
-
-## Pruebas
-
-
-### Prueba 1: Ejecución con archivo 'bottle.dat'
-
-
-### Prueba 2: Ejecución con archivo 'bottle.dat' y 1500 pasos
-
-
-### Prueba 3: Ejecución con dimensiones 1980x1080 y 1500 pasos
-
-
-## Conclusiones
 
 
 
