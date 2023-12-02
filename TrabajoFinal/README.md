@@ -1,4 +1,8 @@
-# Trabajo Final - Optimización de Monte Carlo Tree Search (MCTS) con OpenMP
+# Trabajo Final - Simulación paralela de Monte Carlo
+
+## Integrantes:
+- Kevin Alexis Prada Morales - 2191928
+- Ronald Arias Manrique - 2191927
 
 Este repositorio aborda el objetivo de paralelizar y optimizar el método de Monte Carlo Tree Search (MCTS) mediante el uso de OpenMP. MCTS es comúnmente utilizado en la toma de decisiones en entornos de inteligencia artificial y juegos.
 
@@ -133,6 +137,6 @@ A continuación se presentan imágenes de las ejecuciones:
 
 Este proyecto se basa en el trabajo original de [Michael Bzms](https://github.com/michaelbzms), cuyo repositorio original se puede encontrar en [https://github.com/michaelbzms/MonteCarloTreeSearch](https://github.com/michaelbzms/MonteCarloTreeSearch). Se agradece a Michael Bzms por proporcionar la implementación inicial del algoritmo Monte Carlo Tree Search (MCTS) en C++.
 
-La versión presente en este repositorio ha sido modificada para introducir paralelismo y optimizaciones mediante el uso de OpenMP. Si estás interesado en la implementación original, te recomiendo visitar el repositorio original de Michael Bzms para obtener más detalles y contextos sobre la implementación del MCTS.
+La versión presente en este repositorio ha sido modificada para introducir paralelismo y optimizaciones mediante el uso de OpenMP.
 
 [Repositorio Original de Michael Bzms](https://github.com/michaelbzms/MonteCarloTreeSearch)
