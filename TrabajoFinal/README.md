@@ -47,9 +47,6 @@ void MCTS_node::rollout() {
 
 2. **`for (int i = 0; i < NUMBER_OF_THREADS; i++)`:** Este es el bucle que se ejecutará en paralelo. Cada iteración del bucle representa una tarea que puede ejecutarse de manera independiente.
 
-3. **`// ... código paralelo ...`:** Aquí iría el código que se ejecutará de manera paralela. Cada hilo ejecutará esta sección de código para una iteración específica del bucle.
-
-4. **`// ... más código ...`:** Cualquier código adicional después del bucle paralelo.
 
 Este bloque de código paraleliza la ejecución de un bucle, distribuyendo las iteraciones entre múltiples hilos. Específicamente, el bucle paralelizado se utiliza para realizar tareas independientes en paralelo, aprovechando así la capacidad de procesamiento multicore de la máquina. En el contexto del MCTS, este enfoque paralelo puede acelerar el proceso de simulación o rollout, lo que contribuye a una mejora en el rendimiento general del algoritmo.
 
