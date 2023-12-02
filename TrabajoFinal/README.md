@@ -118,9 +118,11 @@ Basándonos en los resultados obtenidos, podemos extraer las siguientes conclusi
 
 A continuación se presentan imágenes de las ejecuciones:
 
-
+#### Sin Paralelizar
 ![Versión sin Paralelizar](imgs/sinparalelizar1.png)
 ![Versión sin Paralelizar](imgs/sinparalelizar2.png)
+
+#### Paralelizado
 ![Versión Paralelizada](imgs/paralelizado1.png)
 ![Versión Paralelizada](imgs/paralelizado2.png)
 
