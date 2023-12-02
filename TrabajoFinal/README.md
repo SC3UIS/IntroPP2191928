@@ -40,8 +40,8 @@ void MCTS_node::rollout() {
     #pragma omp parallel for
     for (int i = 0; i < NUMBER_OF_THREADS; i++) {
     }
-}```
-
+}
+```
 
 1. **`#pragma omp parallel for`:** Esta línea indica al compilador que la siguiente estructura de bucle debe ejecutarse en paralelo. OpenMP se encargará de distribuir las iteraciones del bucle entre varios hilos de ejecución. Cada hilo ejecutará una porción del bucle de manera concurrente.
 
