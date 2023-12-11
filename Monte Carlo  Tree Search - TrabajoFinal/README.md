@@ -66,6 +66,23 @@ la paralelización se ha aplicado a la función simulateMonteCarlo, específicam
 ```
 La directiva **`#pragma omp parallel for reduction(+:totalPayoff)`** utilizada en el bucle for es una directiva de OpenMP que instruye al compilador para que paralelice el bucle. La cláusula **`reduction(+:totalPayoff)`** asegura que la variable totalPayoff, que acumula los resultados de las simulaciones individuales, se maneje de manera segura en un entorno de múltiples hilos, sumando correctamente los resultados individuales de cada hilo en la variable compartida totalPayoff, lo que contribuye a una mejora en el rendimiento general del algoritmo.
 
+## Cómo ejecutar
+
+Para compilar y ejecutar el programa, se deben seguir estos pasos:
+
+1. **Clonar el Repositorio**
+2. **Entorno clúster:** Se debe ejecutar bajo un entorno de clúster gestionado por SLURM, para ello utilizamos:
+
+```srun -n 8 --pty /bin/bash```
+
+3. **Compilar el Programa:** Utilizar el Makefile para compilar el programa. Para eso hay que abrir una terminal y ejecutar el siguiente comando:
+
+```make```
+
+4. **Ejecutarlo:** Después de compilar, se puede ejecutar con el siguiente comando:
+
+```.\MCTS_OpenMP```
+
 ## Evaluación del Código: sin paralelizar y paralelizado (resultados)
 
 Tanto el código sin paralelizar como el paralelizado se corrieron en un PC común pero también en el servidor Guane:
