@@ -8,4 +8,4 @@
 #SBATCH --error=error_MCTS.err%j.err 
 
 ## Se compilan los archivos "MCTS_OpenMP.c"
-gcc -fopenmp omp_summaSimple.c -o omp_summaSimple
+gcc -fopenmp MCTS_OpenMP.c -o MCTS_OpenMP
