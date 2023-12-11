@@ -4,6 +4,8 @@
 - Kevin Alexis Prada Morales - 2191928
 - Ronald Arias Manrique - 2191927
 
+**Vídeo explicativo:** https://youtu.be/J336oQCJYRY
+
 Este repositorio aborda la simulación de árbol de búsqueda Monte Carlo para estimar el valor de problemas matemáticos complejos, como la fijación de precios de opciones.
 
 ## ¿Qué es Monte Carlo Tree Search (MCTS)?
