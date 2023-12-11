@@ -4,7 +4,7 @@
 - Kevin Alexis Prada Morales - 2191928
 - Ronald Arias Manrique - 2191927
 
-**Vídeo explicativo:** https://youtu.be/J336oQCJYRY
+**Vídeo explicativo:** [https://youtu.be/J336oQCJYRY](https://youtu.be/-lwrM3FpDCM)
 
 Este repositorio aborda la simulación de árbol de búsqueda Monte Carlo para estimar el valor de problemas matemáticos complejos, como la fijación de precios de opciones.
 
