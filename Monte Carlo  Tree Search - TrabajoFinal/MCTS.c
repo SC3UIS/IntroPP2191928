@@ -9,7 +9,7 @@
     Este código se distribuye bajo la licencia GNU LGPL.
 
   Original Author:
-    Manas Sharma 
+    michaelbzms 
 
   OpenMP Modification:
     30 de noviembre de 2023 por Kevin Prada y Ronald Arias, 
