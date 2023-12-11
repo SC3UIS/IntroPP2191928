@@ -84,9 +84,11 @@ Tanto el código sin paralelizar como el paralelizado se corrieron en un PC com�
 | 10,000       | 100,000      | 177.100             | 57.408           |
 
 #### Imágenes Sin Paralelizar
-- **En el equpo local**
+- **En el equipo local**
+
 ![Versión sin Paralelizar](imgs/SinOpenMP_Local.png)
 - **En el servidor Guane**
+
 ![Versión sin Paralelizar](imgs/SinOpenMP_GUANE.png)
 #### Resultados Con Paralelización: 
 
@@ -97,11 +99,18 @@ Tanto el código sin paralelizar como el paralelizado se corrieron en un PC com�
 | 10,000       | 100,000      | 84.961              | 42.342           |
 
 #### Imágenes Con Paralelización:
-- **En el equpo local**
+- **En el equipo local**
+
 ![Versión Paralelizada](imgs/ConOpenMP_Local.png)
 - **En el servidor Guane**
+
 ![Versión Paralelizada](imgs/ConOpenMP_GUANE.png)
 
+### Observaciones y Conclusiones:
+
+1. En general, los tiempos de ejecución con OpenMP son significativamente más bajos en comparación con los tiempos sin paralelización. Esto indica que la paralelización ha mejorado la eficiencia y acelerado la ejecución del código en ambas plataformas, tanto en el PC local como en el Servidor Guane.
+2. En los casos de `100` iteraciones y `1000` simulaciones, el impacto de la paralelización es menor, pero aún se observa una mejora en el rendimiento.
+3. A medida que aumenta la complejidad con `1000` iteraciones y `10000` simulaciones, así como con `10000` iteraciones y `100000` simulaciones, la paralelización tiene un impacto más significativo en la reducción de los tiempos de ejecución.
 
 
 ## Referencias
