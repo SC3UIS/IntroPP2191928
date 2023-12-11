@@ -1,25 +1,27 @@
-FLAGS = -O2 -g3 -pedantic -std=c++11 -pthread # -Wall -Wextra
-TICTACTOE_EXE = tictactoe
-QUORIDOR_EXE = quoridor
-COMMON_OBJ = JobScheduler.o mcts.o
+# Compiler settings - Can be customized.
+CC = gcc
+CFLAGS = -Wall -fopenmp
+LDFLAGS = -lm
 
+# Makefile settings - Can be customized.
+APPNAME = MCTS_OpenMP
+EXT = .c
+SRCDIR = src
+OBJDIR = obj
+BINDIR = bin
 
-all: TicTacToe Quoridor
+SOURCES = $(wildcard $(SRCDIR)/*$(EXT))
+OBJECTS = $(SOURCES:$(SRCDIR)/%$(EXT)=$(OBJDIR)/%.o)
 
+all: $(BINDIR)/$(APPNAME)
 
-mcts.o: mcts/src/mcts.cpp mcts/include/mcts.h mcts/include/state.h
-	g++ -c $(FLAGS) mcts/src/mcts.cpp
+$(BINDIR)/$(APPNAME): $(OBJECTS)
+	$(CC) $(CFLAGS) $^ -o $@ $(LDFLAGS)
 
-JobScheduler.o: mcts/src/JobScheduler.cpp mcts/include/JobScheduler.h
-	g++ -c $(FLAGS) mcts/src/JobScheduler.cpp
-
-
-TicTacToe: mcts.o JobScheduler.o examples/TicTacToe/main.cpp examples/TicTacToe/TicTacToe.cpp examples/TicTacToe/TicTacToe.h
-	g++ -o $(TICTACTOE_EXE) $(FLAGS) examples/TicTacToe/main.cpp examples/TicTacToe/TicTacToe.cpp $(COMMON_OBJ)
-
-Quoridor: mcts.o JobScheduler.o examples/Quoridor/main.cpp examples/Quoridor/Quoridor.cpp examples/Quoridor/Quoridor.h
-	g++ -o $(QUORIDOR_EXE) $(FLAGS) examples/Quoridor/main.cpp examples/Quoridor/Quoridor.cpp $(COMMON_OBJ)
-
+$(OBJDIR)/%.o: $(SRCDIR)/%$(EXT)
+	$(CC) $(CFLAGS) -c $< -o $@
 
 clean:
-	rm -f *.o $(TICTACTOE_EXE) $(QUORIDOR_EXE)
+	rm -f $(OBJDIR)/*$(EXT) $(BINDIR)/$(APPNAME)
+
+.PHONY: all clean
